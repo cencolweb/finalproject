@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Assignment 4 - Web Game Programming</title>
+		<link rel="stylesheet" href="style/style.css">
+		<link rel="stylesheet" href="style/w3.css">
+</head>
+
+<body>
+<div id="wrap">
+
+	<div id="gameover">
+		Game Over. You lived <span id="lived"></span> Seconds.
+	</div>
+
+	<div id="health">
+		<div class="w3-progress-container">
+		  <div id="healthstat" class="w3-progressbar w3-green" style="width:100%">
+		  </div>
+		</div>
+	</div>
+
+	<div id="numbers">
+		Highscore: <span id="highscore">0</span> seconds.
+	</div>
+
+	<div id="controls">
+		<input id="start" type="button" value="Start" />
+		<input id="pauseplay" type="button" value="pause/play" />
+	</div>
+
+	<canvas id="gameCanvas" width="900" height="500"></canvas>
+
+</div>
+
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/game.js"></script>
+</body>
+
+</html>
