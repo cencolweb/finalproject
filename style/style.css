@@ -40,14 +40,6 @@ canvas {
 	width:602px;
 }
 
-#gameover {
-	color:red;
-	font-size:16px;
-	text-align: center;
-	width:600px;
-	margin:10px 0 10px 0;
-	display: none;
-}
 
 #numbers {
 	margin: 10px 0 0 0;
@@ -72,13 +64,13 @@ canvas {
   left:2px;
   top:200px;
 }
-#description .allthethings{
+#description .allthethings, #gameover .allthethings{
 	border:none;
 	margin:0;
 	width: auto;
 	color:white;
-	top:40px;
-	left:40px;
+	top:0;
+	padding:50px;
 }
 
 
@@ -126,7 +118,22 @@ canvas {
 .thirditem {
   bottom:360px;
 }
+#gameover {
+	background:#000000 url('../img/gameover.jpg') no-repeat center;
+	background-color: 
+}
 #escmenu {
 	position:relative;
 	margin-top:-605px;
+}
+#description .menubutton, #gameover .menubutton {
+	bottom:10px;
+	width:200px;
+	right:0px;
+	top:30px;
+}
+#gameover .menubutton {
+	left:150px;
+	top:400px;
+	width:500px;
 }

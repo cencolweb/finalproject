@@ -13,19 +13,63 @@ var frameWidth = 900;
 var frameHeight = 600;
 var MainGame = null;
 var MainMenu = null;
+var soundbackground = null;
+var soundforeground = null;
+function play(playname, playtype) {
+	var audio;
+	switch(playname) {
+		case "menubackground" : soundbackground = new Audio('audio/menubackground.mp3');
+								soundbackground.play();
+		 						break;
+		case "menuhover"	  : soundforeground = new Audio('audio/menuhover.mp3');
+								soundforeground.play();
+		 						break;
+		case "menuclick"	  : soundforeground = new Audio('audio/menuclick.wav');
+								soundforeground.play();
+		 						break;
+		case "gameover"		  : soundbackground = new Audio('audio/gameover.mp3');
+								soundbackground.play();
+		 						break;
+		case "playbackground" : soundbackground = new Audio('audio/playbackground.mp3');
+								soundbackground.play();
+		 						break;
+	} 
+	
+}
+function stop(playname) {
+	playname.pause();
+	playname.currentTime = 0;
+}
+play('menubackground', '');
+
+$(".menucanvas .menubutton").hover(
+  function() {
+    play('menuhover');
+  }, function() {
+    
+  }
+);
+
+$( ".menucanvas .menubutton" ).click(
+  function() {
+    play('menuclick');
+  }
+);
 
 function showPanel(panelname) {
 	$("#gameCanvas").hide();
 	$("#mainmenu").hide();
 	$("#escmenu").hide();
 	$("#description").hide();
+	$("#gameover").hide();
 	if(panelname == "escmenu") {
 		$("#gameCanvas").show();
 	}
 	$("#" + panelname).show();
 }
 
-showPanel("description");
+showPanel("mainmenu");
+interval = setInterval(gamePlay, 8);
 
 function exitgame(){
 	oppYPos = [];
@@ -36,12 +80,12 @@ function exitgame(){
 	oppImage;
 	paused = false;
 	hits = 0;
-	interval = null;
+	//interval = null;
 
 	hits = 0;
-	paused = false;
-	startTime = new Date();
-	clearInterval(interval);
+	paused = true;
+	//clearInterval(interval);
+	//interval = null;
 }
 
 // pause play  handler
@@ -49,9 +93,11 @@ function pausePlay() {
 	if(paused) {
 		paused = false;
 		showPanel("gameCanvas");
+		soundbackground.play();
 	} else {
 		paused = true;
 		showPanel("escmenu");
+		soundbackground.pause();
 	}
 }
 
@@ -69,16 +115,29 @@ $("#btninstructions").click(function() {
 	showPanel("description");
 });
 
+$("#btnbacktomenu").click(function() {
+	showPanel("mainmenu");
+});
+
+
 // game start trigger
 $("#btnstartgame").click(function() {
 	showPanel("gameCanvas");
 	initGame();
+	stop(soundbackground);
+	play("playbackground", "");
 });
 $("#btnexit").click(function() {
 	exitgame();
 	showPanel("mainmenu");
 });
+$("#btnexitfromover").click(function() {
+	stop(soundbackground);
+	play("menubackground", "");
+	exitgame();
+	showPanel("mainmenu");
 
+});
 function initGame() {
 	oppYPos = [];
 	oppXPos = [];
@@ -88,7 +147,7 @@ function initGame() {
 	oppImage;
 	paused = false;
 	hits = 0;
-	interval = null;
+	//interval = null;
 
 	// initialize controls
 	var gameCanvas = document.getElementById("gameCanvas");
@@ -113,7 +172,7 @@ function initGame() {
 	startTime = new Date();
 
 	// starts game
-	interval = setInterval(gamePlay, 8);
+	
 }
 
 function mouseMove(mouseEvent) {
@@ -164,20 +223,10 @@ function gamePlay() {
 
 			// if 4 times hits, game is over
 			if(hits >= 4) {
-				// disable configs
-				$("#pauseplay").prop('disabled', true);
-				$("#start").prop('disabled', false);
-				$("#gameover").show();
-				paused = true;
-				// reset interval
-				clearInterval(interval);
-				interval = null;
-				// calculate current score and update highscore
-				var currentScore = ((new Date()) - startTime) / 1000;
-				if(currentScore > highScore) highScore = currentScore;
-				$("#lived").html(currentScore);
-				$("#highscore").html(highScore);
-			}
+				exitgame();
+				showPanel("gameover");
+				stop(soundbackground);
+				play("gameover", "");			}
 			// remove enemy on collision
 			oppXPos.splice(i, 1);
 			oppYPos.splice(i, 1);

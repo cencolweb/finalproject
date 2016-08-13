@@ -10,31 +10,53 @@
 <body>
 <div id="wrap">
 
-	<div id="gameover">
-		Game Over. You lived <span id="lived"></span> Seconds.
-	</div>
 
-	<div id="health">
-		<div class="w3-progress-container">
-		  <div id="healthstat" class="w3-progressbar w3-green" style="width:100%">
-		  </div>
+<div id="frame">
+	<canvas id="gameCanvas" width="900" height="600"></canvas>
+
+	<div id="mainmenu" class="menucanvas noselect">
+		<div id="" class="allthethings">
+			<div id="btnstartgame" class="menubutton firstitem"><p>START GAME</p></div>
+			<div id="btninstructions" class="menubutton seconditem"><p>INSTRUCTIONS</p></div>
+			<div id="btnexit2" class="menubutton thirditem"><p>EXIT</p></div>
 		</div>
-	</div>
+	</div> 
 
-	<div id="numbers">
-		Highscore: <span id="highscore">0</span> seconds.
-	</div>
+	<div id="escmenu" class="menucanvas noselect transparent">
+		<div id="" class="allthethings">
+			<div id="btnresume" class="menubutton firstitem"><p>RESUME</p></div>
+			<div id="btnexit" class="menubutton seconditem"><p>EXIT</p></div>
+		</div>
+	</div> 
 
-	<div id="controls">
-		<input id="start" type="button" value="Start" />
-		<input id="pauseplay" type="button" value="pause/play" />
-	</div>
+	<div id="description" class="menucanvas noselect">
+		<div id="" class="allthethings">
+			<h2> How to play? </h2> </br></br>
+			<p>Our Hero Mario needs your help to tackle all the object which come in his way.</p>
 
-	<canvas id="gameCanvas" width="900" height="500"></canvas>
+			<p>Use your mouse to move the mario in all the direction to save him from the objects coming.</p>
+
+			<p>As you touch the objects Mario life get decrease and to restore that you need to collect allthe burgers which comes in between whicle tackling the objects to increase the life. </p>
+			
+			<p>So, get ready to Save the Mario!!!</p>
+
+			<div id="btnbacktomenu" class="menubutton seconditem"><p>&lt;&lt; BACK</p></div>
+
+		</div>
+	</div> 
+
+	<div id="gameover" class="menucanvas noselect transparent">
+		<div id="" class="allthethings">
+			<div id="btnexitfromover" class="menubutton seconditem"><p>MAIN MENU</p></div>
+		</div>
+	</div> 
+
+</div>
 
 </div>
 
 	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/soundjs-0.6.2.min.js"></script>
 	<script src="js/game.js"></script>
 </body>
 
