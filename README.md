@@ -1,6 +1,6 @@
 # Project Title
 
-Save the mario.
+Save The Mario.
 
 ## Getting Started
 
