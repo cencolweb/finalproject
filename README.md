@@ -4,7 +4,7 @@ Save The Mario.
 
 ## Getting Started
 
-Browse to https://comp397finalprojectsummer2016.herokuapp.com/ and play it!!! 
+Browse to https://comp397finalprojectsummer2016.herokuapp.com/index.html and play it!!! 
 
 ### Prerequisities
 
