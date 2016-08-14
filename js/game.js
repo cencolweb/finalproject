@@ -11,7 +11,6 @@ var paused = false;
 var hits = 0;
 var interval = null;
 var startTime = null;
-var highScore = 0;
 var frameWidth = 900;
 var frameHeight = 600;
 var MainGame = null;
@@ -25,22 +24,34 @@ var positionFactor = 1;
 var enemiesPerSecond = 1/20;
 var gameCanvas = document.getElementById("gameCanvas");
 var canvasContext = gameCanvas.getContext("2d");
-
+var highScore = 0 ;
+var score = 0;
+var displayScore = 0 ;
 function play(playname, playtype) {
 	var audio;
 	switch(playname) {
 		case "menubackground" : soundbackground = new Audio('audio/menubackground.mp3');
+								if(soundEnabled) soundbackground.play();
 		 						break;
 		case "menuhover"	  : soundforeground = new Audio('audio/menuhover.mp3');
+								if(soundEnabled) soundforeground.play();
 		 						break;
 		case "menuclick"	  : soundforeground = new Audio('audio/menuclick.wav');
+								if(soundEnabled) soundforeground.play();
 		 						break;
 		case "gameover"		  : soundbackground = new Audio('audio/gameover.mp3');
+								if(soundEnabled) soundbackground.play();
 		 						break;
 		case "playbackground" : soundbackground = new Audio('audio/playbackground.mp3');
+								if(soundEnabled) soundbackground.play();
 		 						break;
-	}
-	if(soundEnabled) soundbackground.play();
+		case "enemyhit" : 		soundforeground = new Audio('audio/enemyhit.wav');
+								if(soundEnabled) soundforeground.play();
+		 						break;
+		case "mashroom" : 		soundforeground = new Audio('audio/mashroom.wav');
+								if(soundEnabled) soundforeground.play();
+		 						break;
+	};
 }
 
 function muteUnmute() {
@@ -185,6 +196,7 @@ function initGame() {
 	currentLevel = 1;
 	positionFactor = 1;
 	enemiesPerSecond = 1/20;
+	score = 0;
 	increaseLife(); increaseLife(); increaseLife(); increaseLife();
 	// initialize controls
 	gameCanvas = document.getElementById("gameCanvas");
@@ -197,8 +209,9 @@ function initGame() {
 	playerImage.src = "img/avatar.png";
 	mashroomImage.src = "img/mashroom.png";
 
-	$('.levelcount').html('1');
-	
+	$('#levelcount').html('1');
+	$('#scorecount').html('0');
+	$(".highscore").html("");
 	// draws player image
 	gameCanvas.getContext("2d").drawImage(playerImage, Math.random() * 100, Math.random() * 100);
 	
@@ -231,19 +244,21 @@ var gameplay = function gamePlay() {
 	var totalMashrooms = mashroomXPos.length;
 	// control speed 
 	startTime++;
-	if(startTime > 200 && currentLevel == 1) { // 900
+	if(startTime > 900 && currentLevel == 1) { // 900
 		currentLevel = 2;
-		$('.levelcount').html(currentLevel);
+		$('#levelcount').html(currentLevel);
 		tickTime = 9;
 	}
-	if(startTime > 400 && currentLevel == 2) { // 4000
+	if(startTime > 4000 && currentLevel == 2) { // 4000
 		currentLevel = 3;
-		$('.levelcount').html(currentLevel);
+		$('#levelcount').html(currentLevel);
 		tickTime = 5;
 		enemiesPerSecond = 1 / 13;
 		positionFactor = 2;
 	}
-
+	score++;
+	displayScore = parseInt(score/100);
+	$("#scorecount").html(displayScore);
 	
 
 	// creates two new enemies per second ( 1 / 20)
@@ -253,8 +268,9 @@ var gameplay = function gamePlay() {
 		oppYPos.push(Math.random() * frameWidth);
 	}
 
+	// create mashrooms
 	var mashroomVis = Math.random();
-	if(mashroomVis < 1/999 && mashroomVis < 0.01) {
+	if(mashroomVis < 1/999 && mashroomVis < 0.01 && currentLevel > 1 ) {
 		mashroomXPos.push(0);
 		mashroomYPos.push(Math.random() * frameWidth);
 		console.log("Timer: " + startTime + " , Level : " + Math.random());
@@ -291,10 +307,11 @@ var gameplay = function gamePlay() {
 				// remove mashroom on collision
 				mashroomXPos.splice(i, 1);
 				mashroomYPos.splice(i, 1);
-			if(hits > 0) {
-				increaseLife();
-				hits--;
-			}
+				if(hits > 0) {
+					play("mashroom");
+					increaseLife();
+					hits--;
+				}
 		}
 	}
 
@@ -309,11 +326,19 @@ var gameplay = function gamePlay() {
 			hits++;
 			decreaseLife();
 			// show health stat
-
+			play("enemyhit");
 			// if 4 times hits, game is over
 			if(hits >= 4) {
 				exitgame();
-				
+
+
+				if(displayScore > highScore) {
+					highScore = displayScore;
+					$(".highscore").html("Congrats You made a Highscore of " + highScore);
+				} else {
+					$(".highscore").html("You made a score of " + displayScore);
+				}
+
 				showPanel("gameover");
 				stop(soundbackground);
 				play("gameover", "");			}

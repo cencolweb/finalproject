@@ -13,6 +13,12 @@ canvas, .menucanvas {
 	height: 600px;
 	display: none;
 }
+
+.highscore {
+    color: #ffffff;
+    margin: 200px 0 0 335px;
+    position: absolute;
+}
 canvas {
 	cursor: url("../img/transperent.png"), none;
 	background:url('../img/grass.jpg');
