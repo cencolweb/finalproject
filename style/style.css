@@ -17,6 +17,33 @@ canvas {
 	cursor: url("../img/transperent.png"), none;
 	background:url('../img/grass.jpg');
 }
+#statusBar {
+	width:900px;
+	background-color: rgba(0, 0, 0, 0.30);
+	position: absolute;
+}
+#statusBar .gamestats {
+	float:left;
+	margin:2px 0 3px 5px;
+	width: 200px;
+}
+#statusBar .gamestats img {
+	margin:0 2px 0 2px;
+}
+#statusBar .gamelevel {
+	float:left;
+	margin:2px 0 3px 10px;
+	font-weight: bold;
+	color: #ffffff;
+}
+#statusBar .controls {
+	float:right;
+	margin:3px 10px 2px 0;
+}
+#statusBar .controls a{
+	display: block;
+	text-decoration: none !important;
+} 
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
   -webkit-user-select: none;   /* Chrome/Safari/Opera */
