@@ -281,6 +281,22 @@ var gameplay = function gamePlay() {
 		canvasContext.drawImage(mashroomImage,  mashroomXPos[i], mashroomYPos[i])
 	}
 
+	// detect mashroom 
+	for(i=0;i<totalOpps;i++){
+		if ( ( (avatarX < mashroomXPos[i] && mashroomXPos[i] < avatarX + 35) || 
+				(mashroomXPos[i] < avatarX && avatarX < mashroomXPos[i] + 35) ) 
+					&& ( (avatarY < mashroomYPos[i] && mashroomYPos[i] < avatarY + 35) 
+				|| (mashroomYPos[i] < avatarY && avatarY < mashroomYPos[i] + 35) ) ) {
+
+				// remove mashroom on collision
+				mashroomXPos.splice(i, 1);
+				mashroomYPos.splice(i, 1);
+			if(hits > 0) {
+				increaseLife();
+				hits--;
+			}
+		}
+	}
 
 
 	// detect collision and increase hits 
