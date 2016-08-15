@@ -1,0 +1,183 @@
+body {
+	margin:0;
+	padding:0;
+}
+#wrap {
+	margin:10px 0 0 50px;
+}
+
+canvas, .menucanvas {
+	border: 1px solid black;
+
+	width:900px;
+	height: 600px;
+	display: none;
+}
+
+.highscore {
+    color: #ffffff;
+    margin: 200px 0 0 335px;
+    position: absolute;
+}
+canvas {
+	cursor: url("../img/transperent.png"), none;
+	background:url('../img/grass.jpg');
+}
+#statusBar {
+	width:900px;
+	background-color: rgba(0, 0, 0, 0.30);
+	position: absolute;
+}
+#statusBar .gamestats {
+	float:left;
+	margin:2px 0 3px 5px;
+	width: 200px;
+}
+#statusBar .gamestats img {
+	margin:0 2px 0 2px;
+}
+.gamelogo img {
+	margin: 100px 0 0 250px ;
+	position: absolute;
+}
+
+.runningmario img {
+	margin: 70px 0 0 150px;
+	position: absolute;
+	width: 100px;
+}
+
+#statusBar .gamelevel {
+	float:left;
+	margin:2px 0 3px 10px;
+	font-weight: bold;
+	color: #ffffff;
+}
+#statusBar .controls {
+	float:right;
+	margin:3px 10px 2px 0;
+}
+#statusBar .controls a{
+	display: block;
+	text-decoration: none !important;
+} 
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+.menucanvas {
+	background-color: #000000;
+	cursor:url('../img/aero.png'), default !important;
+} 
+.menucanvas a:hover{
+	cursor:url('../img/aero.png'), default !important;
+}
+#controls {
+	margin:10px 0 10px 0;
+}
+#health {
+	width:602px;
+}
+
+
+#numbers {
+	margin: 10px 0 0 0;
+	font-size: 13px;
+}
+#frame {
+	width: 900px; height:600px; 
+	margin:0 auto;
+	margin-top:100px;
+}
+
+.allthethings {
+  width:0px;
+  height:0px;
+  border-left: 300px solid transparent;
+  border-right:300px solid transparent;
+  border-top: 300px solid transparent;
+  border-radius: px;
+  position:relative;
+  margin:auto;
+  top:5px;
+  left:2px;
+  top:200px;
+}
+#description .allthethings, #gameover .allthethings{
+	border:none;
+	margin:0;
+	width: auto;
+	color:white;
+	top:0;
+	padding:50px;
+}
+
+
+.menubutton {
+	position:relative;
+	background-color:#4C4C4C;
+	text-align:center;
+	font-size:30px;
+	background-size: 1px 300%;
+	-webkit-transition:0.5s;
+	transition:0.5s;
+	color:orange;
+	font-family:shadows into light;
+	height:50px;
+ 	width:500px;
+}
+.menubutton:hover {
+  background:#7A0000;
+  color:white;
+}
+
+.menubutton p {
+  position:relative;
+  top:2px;
+  right:4px;
+}
+.menubutton {
+	right:250px;
+	height:50px;
+	width:500px;
+}
+.transparent {
+	background-color: rgba(0,0,0,0.67);
+}
+.menubutton:hover {
+	right:300px;
+	width:600px;
+}
+.firstitem {
+  bottom:330px;
+}
+.seconditem {
+  bottom:345px;
+}
+.thirditem {
+  bottom:360px;
+}
+#gameover {
+	background:#000000 url('../img/gameover.jpg') no-repeat center;
+	background-color: 
+}
+#escmenu {
+	position:relative;
+	margin-top:-605px;
+}
+#description .menubutton, #gameover .menubutton {
+	bottom:10px;
+	width:200px;
+	right:0px;
+	top:30px;
+}
+#gameover .menubutton {
+	left:150px;
+	top:400px;
+	width:500px;
+}

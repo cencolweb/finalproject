@@ -1,0 +1,14 @@
+https://github.com/cencolweb/finalproject
+deepm007@yahoo.co.in
+deepm007
+
+https://github.com/cencolweb/finalproject
+https://comp397finalprojectsummer2016.herokuapp.com/index.html
+
+nawabaamir0308@gmail.com
+nawab9
+aamirnawab12345
+
+git add -A
+git commit -m ""
+git push
