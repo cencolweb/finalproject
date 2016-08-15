@@ -163,7 +163,9 @@ $("#btninstructions").click(function() {
 $("#btnbacktomenu").click(function() {
 	showPanel("mainmenu");
 });
-
+$("#btnexit2").click(function() {
+	window.close();
+});
 
 
 
